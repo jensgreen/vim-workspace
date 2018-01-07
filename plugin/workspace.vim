@@ -89,9 +89,37 @@ hi link WorkspaceTabHidden WorkspaceTabHiddenDefault
 hi link WorkspaceFill WorkspaceFillDefault
 hi link WorkspaceIcon WorkspaceIconDefault
 
+
+function! s:WorkspaceSetBase16Colors()
+  " WorkspaceFill - the blank space left on the right of the tabline.
+  exec "hi! WorkspaceFill ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#999999"
+
+  " WorkspaceBufferCurrent - the current buffer.
+  exec "hi! WorkspaceBufferCurrent ctermbg=" . g:base16_cterm0B . " ctermfg=" . g:base16_cterm02 . " guibg=#00FF00 guifg=#000000"
+  " WorkspaceBufferHidden - a non-current buffer.
+  exec "hi! WorkspaceBufferHidden ctermbg=" . g:base16_cterm02 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#000000"
+  " WorkspaceBufferActive - an active buffer (a non-current buffer visible in a non-current window).
+  exec "hi! WorkspaceBufferActive ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#00FF00"
+
+  " WorkspaceBufferTrunc - the truncation indicators (count of truncated buffers from the left or right).
+  exec "hi! WorkspaceBufferTrunc ctermbg=" . g:base16_cterm0E . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#000000"
+
+  " WorkspaceTabCurrent - the current tab.
+  exec "hi! WorkspaceTabCurrent ctermbg=" . g:base16_cterm0D . "  ctermfg=" . g:base16_cterm01 . " guibg=#0000FF guifg=#000000"
+  " WorkspaceTabHidden - a non-current tab.
+  exec "hi! WorkspaceTabHidden ctermbg=" . g:base16_cterm03 . " ctermfg=" . g:base16_cterm04 . " guibg=#0000FF guifg=#000000"
+endfunction
+
+
 function! s:SetColors()
     if exists("*g:WorkspaceSetCustomColors")
         call g:WorkspaceSetCustomColors()
+    endif
+
+    if exists("g:base16_cterm00")
+        " echo "setting base16 colors"
+        call s:WorkspaceSetBase16Colors()
+        " echo "done"
     endif
 
     if !g:workspace_powerline_separators
@@ -130,7 +158,7 @@ function! s:SetColors()
 
                 if left_hi == "BufferActive" || left_hi == "BufferTrunc"
                     let fg = synIDattr(synIDtrans(hlID("WorkspaceBufferHidden")), 'fg', 'cterm')
-                    let fgh = synIDattr(synIDtrans(hlID("WorkspaceBufferHidden")), 'fg#', 'gui') 
+                    let fgh = synIDattr(synIDtrans(hlID("WorkspaceBufferHidden")), 'fg#', 'gui')
                 endif
 
                 exec "hi! Workspace" . hi_name . " ctermfg=" . fg . " ctermbg=" . right_bg
