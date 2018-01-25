@@ -92,22 +92,29 @@ hi link WorkspaceIcon WorkspaceIconDefault
 
 function! s:WorkspaceSetBase16Colors()
   " WorkspaceFill - the blank space left on the right of the tabline.
-  exec "hi! WorkspaceFill ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#999999"
+  exec "hi! WorkspaceFill ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04
+  exec "hi! WorkspaceFill guibg=#"  . g:base16_gui01   . " guifg=#"  . g:base16_gui04
 
   " WorkspaceBufferCurrent - the current buffer.
-  exec "hi! WorkspaceBufferCurrent ctermbg=" . g:base16_cterm0B . " ctermfg=" . g:base16_cterm02 . " guibg=#00FF00 guifg=#000000"
+  exec "hi! WorkspaceBufferCurrent ctermbg=" . g:base16_cterm0B . " ctermfg=" . g:base16_cterm02
+  exec "hi! WorkspaceBufferCurrent guibg=#"  . g:base16_gui0B   . " guifg=#"  . g:base16_gui02
   " WorkspaceBufferHidden - a non-current buffer.
-  exec "hi! WorkspaceBufferHidden ctermbg=" . g:base16_cterm02 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#000000"
+  exec "hi! WorkspaceBufferHidden ctermbg=" . g:base16_cterm02 . " ctermfg=" . g:base16_cterm04
+  exec "hi! WorkspaceBufferHidden guibg=#"  . g:base16_gui02   . " guifg=#"  . g:base16_gui04
   " WorkspaceBufferActive - an active buffer (a non-current buffer visible in a non-current window).
-  exec "hi! WorkspaceBufferActive ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#00FF00"
+  exec "hi! WorkspaceBufferActive ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04
+  exec "hi! WorkspaceBufferActive guibg=#"  . g:base16_gui01   . " guifg=#"  . g:base16_gui04
 
   " WorkspaceBufferTrunc - the truncation indicators (count of truncated buffers from the left or right).
-  exec "hi! WorkspaceBufferTrunc ctermbg=" . g:base16_cterm0E . " ctermfg=" . g:base16_cterm04 . " guibg=#999999 guifg=#000000"
+  exec "hi! WorkspaceBufferTrunc ctermbg=" . g:base16_cterm0E . " ctermfg=" . g:base16_cterm04
+  exec "hi! WorkspaceBufferTrunc guibg=#"  . g:base16_gui0E   . " guifg=#"  . g:base16_gui04
 
   " WorkspaceTabCurrent - the current tab.
-  exec "hi! WorkspaceTabCurrent ctermbg=" . g:base16_cterm0D . "  ctermfg=" . g:base16_cterm01 . " guibg=#0000FF guifg=#000000"
+  exec "hi! WorkspaceTabCurrent ctermbg=" . g:base16_cterm0D . " ctermfg=" . g:base16_cterm01
+  exec "hi! WorkspaceTabCurrent guibg=#"  . g:base16_gui0D   . " guifg=#"  . g:base16_gui01
   " WorkspaceTabHidden - a non-current tab.
-  exec "hi! WorkspaceTabHidden ctermbg=" . g:base16_cterm03 . " ctermfg=" . g:base16_cterm04 . " guibg=#0000FF guifg=#000000"
+  exec "hi! WorkspaceTabHidden ctermbg=" . g:base16_cterm03 . " ctermfg=" . g:base16_cterm04
+  exec "hi! WorkspaceTabHidden guibg=#"  . g:base16_gui03   . " guifg=#"  . g:base16_gui04
 endfunction
 
 
