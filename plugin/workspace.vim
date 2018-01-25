@@ -117,9 +117,7 @@ function! s:SetColors()
     endif
 
     if exists("g:base16_cterm00")
-        " echo "setting base16 colors"
         call s:WorkspaceSetBase16Colors()
-        " echo "done"
     endif
 
     if !g:workspace_powerline_separators
