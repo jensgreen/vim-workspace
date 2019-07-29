@@ -166,6 +166,10 @@ function! s:SetColors()
     hi! link BuffetRightTrunc BuffetTrunc
     hi! link BuffetEnd BuffetBuffer
 
+    if exists("g:base16_cterm00")
+        call s:BuffetSetBase16Colors()
+    endif
+
     if exists("*g:BuffetSetCustomColors")
         call g:BuffetSetCustomColors()
     endif
@@ -202,6 +206,26 @@ function! s:SetColors()
             endif
         endfor
     endfor
+endfunction
+
+function! s:BuffetSetBase16Colors()
+  " BuffetCurrentBuffer - the current buffer.
+  exec "hi! BuffetCurrentBuffer ctermbg=" . g:base16_cterm0B . " ctermfg=" . g:base16_cterm02
+  exec "hi! BuffetCurrentBuffer guibg=#"  . g:base16_gui0B   . " guifg=#"  . g:base16_gui02
+  " BuffetBuffer - a non-current and non-active buffer.
+  exec "hi! BuffetBuffer ctermbg=" . g:base16_cterm02 . " ctermfg=" . g:base16_cterm04
+  exec "hi! BuffetBuffer guibg=#"  . g:base16_gui02   . " guifg=#"  . g:base16_gui04
+  " BuffetActiveBuffer - an active buffer (a non-current buffer visible in a non-current window).
+  exec "hi! BuffetActiveBuffer ctermbg=" . g:base16_cterm01 . " ctermfg=" . g:base16_cterm04
+  exec "hi! BuffetActiveBuffer guibg=#"  . g:base16_gui01   . " guifg=#"  . g:base16_gui04
+
+  " BuffetTrunc - the truncation indicator (count of truncated buffers from the left or right).
+  exec "hi! BuffetTrunc ctermbg=" . g:base16_cterm0E . " ctermfg=" . g:base16_cterm04
+  exec "hi! BuffetTrunc guibg=#"  . g:base16_gui0E   . " guifg=#"  . g:base16_gui04
+
+  " BuffetTab - a tab.
+  exec "hi! BuffetTab ctermbg=" . g:base16_cterm0D . " ctermfg=" . g:base16_cterm01
+  exec "hi! BuffetTab guibg=#"  . g:base16_gui0D   . " guifg=#"  . g:base16_gui01
 endfunction
 
 augroup buffet_set_colors
